@@ -25,6 +25,10 @@ Ce projet démontre des compétences en :
 |---|---|---|
 | ![Normal](screenshots/etat_normal.png) | ![Orange](screenshots/alarme_orange.png) | ![Critique](screenshots/alarme_critique.png) |
 
+
+| Historique normal | Historique critique |
+|---|---|
+| ![h1](screenshots/historique_normal.png) | ![h2](screenshots/historique_critique.png) |
 ---
 
 ## ⚙️ Fonctionnalités
@@ -40,6 +44,7 @@ Ce projet démontre des compétences en :
 - Affichage du niveau en temps réel
 - **Barre de niveau visuelle** colorée (vert / orange / rouge)
 - **Graphique historique** du niveau (20 derniers points)
+- **Historique des événements** horodaté avec anti-doublons (insert en haut)
 
 ### 🔹 Système d'alarmes
 | Seuil | Voyant | Description |
@@ -112,7 +117,7 @@ pump-station-scada-simulator-python/
 ## 🔮 Évolutions prévues
 
 - [ ] Mode **Automatique / Manuel**
-- [ ] **Historique des événements** horodaté
+- [X] **Historique des événements** horodaté
 - [ ] Restructuration en plusieurs fichiers (`logique.py`, `interface.py`)
 - [ ] Communication **Modbus TCP**
 - [ ] Connexion **TIA Portal / PLCSIM** (Siemens)
