@@ -21,7 +21,7 @@ Ce projet démontre des compétences en :
 
 ## 📸 Aperçu
 
-| État normal | Alarme niveau haut | Alarme critique |
+| État normal | Alarme niveau bas | Alarme critique |
 |---|---|---|
 | ![Normal](screenshots/etat_normal.png) | ![Orange](screenshots/alarme_orange.png) | ![Critique](screenshots/alarme_critique.png) |
 
@@ -123,7 +123,7 @@ pump-station-scada-simulator-python/
 
 **HAMDI Sid-Ahmed**  
 Technicien en Automatisme & Supervision Industrielle  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profil-0077B5?logo=linkedin)](https://linkedin.com/in/hamdi-sidahmed/)
+🔗 [Mon profil LinkedIn](https://www.linkedin.com/in/hamdi-sid-ahmed)
 
 ---
 
