@@ -324,7 +324,6 @@ cycle_automatique()
 ####################### Part 4 #########################
 # tout ce qui a relation avec l'alarme en haut :la fonction verifier_alarme() et le label de l'alarme 
 
-
 ####################### Part 6 : HISTORIQUE DE NIVEAU #########################
 
 historique_niveau = []
