@@ -12,6 +12,8 @@
 
 Application de supervision industrielle simulant une **station de pompage** avec interface graphique de type **SCADA (IHM)**, développée entièrement en Python.
 
+> Ce projet reproduit le comportement d'un système industriel réel de type cuve + pompe, similaire à ceux utilisés en environnement SCADA (Siemens, Schneider).
+
 Ce projet démontre des compétences en :
 - 🔧 **Automatisme** — logique de fonctionnement, états système, interverrouillages
 - 🖥️ **Supervision industrielle** — interface homme-machine (IHM), alarmes, voyants
@@ -56,8 +58,8 @@ Ce projet démontre des compétences en :
 | Seuil | Voyant | Description |
 |-------|--------|-------------|
 | 20% ≤ niveau ≤ 80% | 🟢 Vert fixe | Aucune alarme |
-| niveau ≥ 80% | 🟠 Orange clignotant | Alarme niveau haut |
-| niveau ≤ 20% | 🟡 Jaune clignotant | Alarme niveau bas |
+| niveau ≥ 80% | 🟠 Orange fixe | Alarme niveau haut |
+| niveau ≤ 20% | 🟡 Jaune fixe | Alarme niveau bas |
 | niveau = 100% ou 0% | 🔴 Rouge clignotant | **CRITIQUE — Arrêt automatique** |
 
 ### 🔹 Logique industrielle
@@ -67,6 +69,20 @@ Ce projet démontre des compétences en :
 - **Fermeture propre** de l'application (annulation des boucles `after()`)
 - **Mode Automatique** : régulation autonome entre 25% et 75% (seuils sécurisés avant alarmes)
 - **Mode Manuel** : prise en main opérateur avec boutons actifs
+
+---
+
+## 🎮 Utilisation
+
+1. Lancer l'application avec `python main.py`
+2. Cliquer sur **Ouvrir** pour démarrer la pompe → le niveau diminue
+3. Cliquer sur **Fermer** pour arrêter la pompe → le niveau monte
+4. Passer en **Mode Auto** → le système régule seul entre 25% et 75%
+5. Observer les **alarmes** et le **voyant** selon le niveau
+6. Consulter l'**historique des événements** en temps réel
+7. Passer en **Mode Manuel** pour reprendre le contrôle
+
+> ⚠️ En mode Auto, les boutons manuels sont désactivés automatiquement.
 
 ---
 
@@ -126,8 +142,7 @@ pump-station-scada-simulator-python/
 
 - [X] Mode **Automatique / Manuel**
 - [X] **Historique des événements** horodaté
-- [ ] Restructuration en plusieurs fichiers (`logique.py`, `interface.py`)
-- [ ] Communication **Modbus TCP**
+- [ ] Restructuration du code en modules séparés ( `logique.py` , `interface.py` )- [ ] Communication **Modbus TCP**
 - [ ] Connexion **TIA Portal / PLCSIM** (Siemens)
 
 ---
