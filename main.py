@@ -25,6 +25,9 @@ job_clignotement = None
 #  Variable de ma part 7
 dernier_etat_alarme = None
 
+#  Variable de ma part 8
+mode = "manuel"   
+
 # -----------------------------
 # Fonctions de contrôle
 # -----------------------------
@@ -113,10 +116,55 @@ def mettre_en_attente():
     label_etat.config(text="Système en attente", bg="gray")
     ajouter_evenement("Système mis en attente")
 
+# -----------------------------
+# Fonctions de ma part 8
+# -----------------------------
+def basculer_mode():
+    global mode
+    if mode == "manuel":
+        mode = "auto"  
+        btn_mode.config(text="Mode Auto")
+        ajouter_evenement("Passage en mode AUTO")
+        # Désactiver les boutons manuels
+        btn_start.config(state="disabled")  
+        btn_stop.config(state="disabled")
+        btn_remplir.config(state="disabled")
+        btn_vider.config(state="disabled")
+
+    else:
+        mode = "manuel"
+        btn_mode.config(text="Mode Manuel")
+        ajouter_evenement("Passage en mode MANUEL")
+        # Réactiver les boutons manuels
+        btn_start.config(state="normal")
+        btn_stop.config(state="normal")
+        btn_remplir.config(state="normal")
+        btn_vider.config(state="normal")
+
 def cycle_automatique():
-    global niveau, job_cycle
+    global niveau, job_cycle, systeme_demarre, pompe_active
     
-    if systeme_demarre:
+    if mode == "auto":
+        systeme_demarre = True  # Assurer que le système est considéré comme démarré en mode auto
+        
+        if niveau >= 75:    
+            if not pompe_active:  # Si la pompe n'est pas déjà active, l'activer
+                pompe_active = True
+                label_etat.config(text="Pompe ouverte", bg="green")
+                ajouter_evenement("AUTO : Pompe ouverte")
+            
+        elif niveau <= 25:
+            if pompe_active:  # Si la pompe est active, la désactiver
+                pompe_active = False
+                label_etat.config(text="Pompe fermée", bg="red")
+                ajouter_evenement("AUTO : Pompe fermée")
+            
+        niveau -=2 if pompe_active else  -1  # Si la pompe est active, le niveau diminue de 2, sinon
+        niveau = max(0, min(100, niveau))  # Assurer que le niveau reste entre 0 et 100    
+        afficher_niveau()  
+        verifier_alarme()  
+
+    elif systeme_demarre :
         if pompe_active:
             niveau -=  2
         else:
@@ -376,6 +424,17 @@ btn_attente = tk.Button(
     command=mettre_en_attente
 )
 btn_attente.pack(pady=20)
+
+####################### Part 8 #########################
+btn_mode = tk.Button(
+    frame_gauche,
+    text="Mode Manuel",
+    bg="purple",
+    fg="white",
+    width=15,
+    command=basculer_mode
+)
+btn_mode.pack(pady=10)
 
 cycle_automatique()
 

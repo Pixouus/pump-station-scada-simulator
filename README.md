@@ -29,6 +29,12 @@ Ce projet démontre des compétences en :
 | Historique normal | Historique critique |
 |---|---|
 | ![h1](screenshots/historique_normal.png) | ![h2](screenshots/historique_critique.png) |
+
+
+| Mode Auto pompe ON | Mode Auto pompe OFF | Mode Manuel |
+|---|---|---|
+| ![a1](screenshots/mode_auto_pompe_on.png) | ![a2](screenshots/mode_auto_pompe_off.png) | ![a3](screenshots/mode_manuel_actif.png) |
+
 ---
 
 ## ⚙️ Fonctionnalités
@@ -59,6 +65,8 @@ Ce projet démontre des compétences en :
 - **Arrêt automatique** aux seuils critiques (0% et 100%)
 - **État système** : blocage au démarrage jusqu'à action utilisateur
 - **Fermeture propre** de l'application (annulation des boucles `after()`)
+- **Mode Automatique** : régulation autonome entre 25% et 75% (seuils sécurisés avant alarmes)
+- **Mode Manuel** : prise en main opérateur avec boutons actifs
 
 ---
 
@@ -116,7 +124,7 @@ pump-station-scada-simulator-python/
 
 ## 🔮 Évolutions prévues
 
-- [ ] Mode **Automatique / Manuel**
+- [X] Mode **Automatique / Manuel**
 - [X] **Historique des événements** horodaté
 - [ ] Restructuration en plusieurs fichiers (`logique.py`, `interface.py`)
 - [ ] Communication **Modbus TCP**
